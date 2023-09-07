@@ -21,6 +21,7 @@ export const GameDetails = () => {
             });   
     }, [gameId]);
 
+
     const onCommentSubmit = async (e) => {
         e.preventDefault();
 
@@ -29,7 +30,7 @@ export const GameDetails = () => {
             comment
         });
 
-        setUsername(state => ({...state, commnets: {...state.comments, [result._id]: result}}));
+        setUsername(state => ({...state, comments: {...state.comments, [result._id]: result}}));
         setUsername('');
         setComment('');
     };
@@ -64,14 +65,14 @@ export const GameDetails = () => {
                     <h2>Comments:</h2>
                     <ul>
                         {/* <!-- list all comments for current game (If any) --> */}
-                        {game.comments?.map(x => (
+                        {game.comments && Object.values(game.comments).map(x => (
                             <li key={x._id} className="comment">
                                 <p>{x.username}: {x.comment}</p>
                             </li>
                         ))}
                     </ul>
 
-                    {!game.comments?.length && (
+                    {!game.comments && (
                         <p className="no-comment">No comments.</p>
                     )}
                 </div>

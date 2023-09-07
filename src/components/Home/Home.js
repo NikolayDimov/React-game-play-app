@@ -21,10 +21,17 @@ export const Home = ({
                 {games.map(x => <GameItem key={x._id} game={x} />)}
 
 
-                
-
                 {/* <!-- Display paragraph: If there is no games  --> */}
                 {games.length === 0 && ( <p className="no-articles">No games yet</p>)}
+
+
+                {/* or */}
+
+                {/* {games.length > 0
+                    ? games.map(x => <GameItem key={x._id} game={x} />)
+                    : <p className="no-articles">No games yet</p>
+                } */}
+                
                
             </div>
 

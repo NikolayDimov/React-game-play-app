@@ -14,7 +14,7 @@ export const GameItem = ({
                 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
             </div>
             <div className="data-buttons">
-                <Link to={`/catalog/${game._id}`} className="details-button">Details</Link>
+                <Link to={`/catalog/${game._id}`} className="btn details-btn">Details</Link>
             </div>
         </div>
 
