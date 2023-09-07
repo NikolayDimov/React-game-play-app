@@ -1,3 +1,5 @@
+// NOT IS USE FOR THIS APP !!!
+
 import * as request from './requester';
 
 const baseUrl = 'http://localhost:3030/jsonstore/comments';

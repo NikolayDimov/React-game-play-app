@@ -11,6 +11,11 @@ export const GameDetails = () => {
     const [username, setUsername] = useState('');
     const [comment, setComment] = useState('');
 
+    const [error, setError] = useState({
+        username: '',
+        comment: '',
+    });
+
 
 
     useEffect(() => {
@@ -44,6 +49,23 @@ export const GameDetails = () => {
     const onUserCommentChange = (e) => {
         setComment(e.target.value);
     };
+
+
+
+    const validateUsername = (e) => {
+        const username = e.target.value;
+        let errorMessage = '';
+
+        if(username.length < 4) {
+            errorMessage = 'Username must be at least 4 characters long';
+        } else if (username.length > 10) {
+            errorMessage = 'Username must be at most 10 characters long';
+
+        }
+
+        setError(state => ({...state, username: errorMessage}));
+    };
+
 
 
     return (
@@ -91,7 +113,19 @@ export const GameDetails = () => {
             <article className="create-comment">
                 <label>Add new comment:</label>
                 <form className="form" onSubmit={onCommentSubmit}>
-                    <input type="text" name="username" placeholder='Pesho' value={username} onChange={onUserNameChange} />
+                    <input 
+                        type="text" 
+                        name="username" 
+                        placeholder='John Doe' 
+                        value={username} 
+                        onChange={onUserNameChange} 
+                        onBlur={validateUsername}
+                    />
+
+                    {error.username && 
+                        <div style={{color:'red'}}>{error.username}</div>
+                    }
+
                     <textarea name="comment" placeholder="Comment......" value={comment} onChange={onUserCommentChange} ></textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
